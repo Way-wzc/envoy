@@ -48,7 +48,9 @@ def envoy_cc_binary(
 def _envoy_select_exported_symbols(xs):
     return select({
         "@envoy//bazel:enable_exported_symbols": xs,
-        "//conditions:default": [],
+        "//conditions:default": [
+            '-L/usr/local/lib/lua/5.1/',
+        ],
     })
 
 # Compute the final linkopts based on various options.
